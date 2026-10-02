@@ -123,6 +123,10 @@ function renderCart(){
 function openCart(o){$('#cart').classList.toggle('open',o);$('#scrim').classList.toggle('on',o)}
 
 function render(){
+  renderInner();
+  if(view!=='shop'&&view!=='success')$('#app').insertAdjacentHTML('afterbegin','<button class="btn" data-go="shop" style="margin-bottom:18px">&larr; Back to shop</button>');
+}
+function renderInner(){
   const a=$('#app');window.scrollTo(0,0);
   if(view==='shop'){
     const cats=['All',...new Set(products.map(p=>p.category))],brands=['All',...new Set(products.map(p=>p.brand).filter(Boolean))].sort();
